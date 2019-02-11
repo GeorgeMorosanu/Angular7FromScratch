@@ -1,2 +1,44 @@
-<app-server></app-server>
-<app-server></app-server>
+
+<button class="btn btn-primary"
+(click)="toggleParagraph()"
+>Display Details</button>
+
+<p [ngClass]="{visible: dispaly === true,
+             invisible: dispaly === false}">Secret Password: Tuna</p>
+
+<ul *ngFor="let logNo of ClickLog; let i = index"
+[ngStyle]="{backgroundColor: getColor(logNo)}"
+[ngClass]="{whiteText: getPositionOfLog(logNo) >= 4}">
+<p>{{ i }}. {{logNo}}</p>
+</ul>
+
+
+
+<br/><br/><br/><br/>
+
+<!-- <input 
+type="text" 
+class="form-control"
+(input)="onUpdateServerName($event)"> -->
+
+<label>Server Name</label>
+
+<input 
+type="text" 
+class="form-control"
+[(ngModel)]="serverName">
+
+<!-- <p>{{ serverName }}</p> -->
+
+
+<button class="btn btn-primary" 
+[disabled]="!allowNewServer"
+(click)="onCreateServer()">Add server</button>
+<!--<p [innerText]="allowNewServer"></p>-->
+
+<!-- <p>{{serverCreationStatus}}</p> -->
+<p *ngIf="serverCreated">Server was created: server name is {{serverName}}</p>
+
+
+
+<app-server *ngFor="let server of servers"></app-server>

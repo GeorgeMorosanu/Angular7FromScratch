@@ -1,0 +1,9 @@
+.visible{
+    visibility: visible;
+}
+.invisible{
+    visibility: hidden;
+}
+.whiteText{
+    color: white;
+}
